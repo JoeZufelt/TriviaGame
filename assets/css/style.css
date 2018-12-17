@@ -1,0 +1,26 @@
+body {
+    background: #dd1b1a;
+    height: 100%;
+    font-family: "Comfortaa", Helvetica, Arial, sans-serif;
+    padding-top: 20px;
+}
+
+.blue_box {
+    text-align: center;
+    background-color: #086788;
+    padding: 14px 24px;
+    font-size: 21px;
+    border-radius: 15px;
+}
+
+#logo {
+    margin: auto;
+    width: 100%;
+    padding: 10px;
+}
+
+#startGame {
+    font-size: 35px;
+    padding-left: 100px;
+    padding-right: 100px;
+}

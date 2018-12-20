@@ -114,7 +114,9 @@ $(document).ready(function(){
     function outOfTime() {
         if (time === 0) {
             stop();
-            $(".questions .answers .startAgain").hide();
+            $(".answers").hide();
+            $(".questions").hide();
+            $(".score").show();
             timeLoss++;
             $("#score").text("Correct: " + wins + " Losses: " + losses + " Unanswered: " + timeLoss);
             $("#winLoss").text("Answer faster!");
@@ -146,6 +148,19 @@ $(document).ready(function(){
         startGame();
     });
 
+    $(".startAgain").on("click", function(){
+        $(".startAgain").hide();
+        $(".score").hide();
+        $(".questions").show();
+        $(".answers").show();
+        wins = 0;
+        losses = 0;
+        timeLoss = 0;
+        i = 0;
+        start();
+        startGame();
+    });
+
     // Here comes the actual Quiz
     var i = 0;
 
@@ -158,6 +173,7 @@ $(document).ready(function(){
     };
 
     function winLoss() {
+        $(".score").show();
         $("#answer").text("Correct answer: " + questionArray[i].correct);
         $("#gif").html(questionArray[i].gif);
         $("#score").text("Correct: " + wins + " Losses: " + losses + " Unanswered: " + timeLoss);
@@ -166,17 +182,19 @@ $(document).ready(function(){
         setTimeout(nextQuestion, 5000);
     };
 
-    function losses() {
-        losses++;
-        $(".questions .answers .startAgain").hide();
-        $("#winLoss").text("Oh my...");
+    function win() {
+        wins++;
+        $(".answers").hide();
+        $(".questions").hide();
+        $("#winLoss").text("Good news!");
         winLoss();
     };
 
-    function win() {
-        wins++;
-        $(".questions .answers startAgain").hide();
-        $("#winLoss").text("Good news!");
+    function loss() {
+        losses++;
+        $(".questions").hide();
+        $(".answers").hide();
+        $("#winLoss").text("Oh my...");
         winLoss();
     };
 
@@ -185,10 +203,11 @@ $(document).ready(function(){
         if (i === 10) {
             $("#score").text("Correct: " + wins + " Losses: " + losses + " Unanswered: " + timeLoss);
             $("#gif").html("<img src='assets/images/Game_Over.gif' height='200' width='auto'></img>");
-            $(".questions .answers .timer").hide();
             $(".startAgain").show();
         } else {
             $(".score").hide();
+            $(".questions").show();
+            $(".answers").show();
             start();
             startGame();
         };
@@ -199,28 +218,28 @@ $(document).ready(function(){
         if (questionArray[i].answer1 === questionArray[i].correct) {
             win();
         } else {
-            losses();
+            loss();
         };
     });
     $("#answerTwo").on("click", function() {
         if (questionArray[i].answer2 === questionArray[i].correct) {
             win();
         } else {
-            losses();
+            loss();
         };
     });
     $("#answerThree").on("click", function() {
         if (questionArray[i].answer3 === questionArray[i].correct) {
             win();
         } else {
-            losses();
+            loss();
         };
     });
     $("#answerFour").on("click", function() {
         if (questionArray[i].answer4 === questionArray[i].correct) {
             win();
         } else {
-            losses();
+            loss();
         };
     });
 

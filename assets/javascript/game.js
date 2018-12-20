@@ -25,7 +25,7 @@ $(document).ready(function(){
             answer3: "Bender's Living Room",
             answer4: "Bender's Spare Bedroom",
             correct: "Bender's Closet",
-            gif: "<img src='assets/images/Bender_Fry.gif' height='200' width='auto'></img>"
+            gif: "<img src='assets/images/bender_fry.gif' height='200' width='auto'></img>"
         },
         questionFour = {
             question: "Who forms the Robot Mafia?",
